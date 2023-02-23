@@ -1,0 +1,7 @@
+pre_config:
+  ports: # 端口号按需修改,如果没有修改go-cqhttp的配置，默认就好
+    bridge: '8080'
+    bot: '5700'
+  account:
+    id: 'xxxxx' # 在单引号之间填qq账号
+    password: 'xxxx'   # 在单引号之间填入qq密码
