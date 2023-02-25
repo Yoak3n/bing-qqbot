@@ -20,7 +20,8 @@ type ReplySender struct {
 }
 
 func ReplyPrivateMessage(message string, userID string) {
-	url := fmt.Sprintf("http://localhost:%s/send_private_msg?user_id=%s&message=%s", config.MyConfig.Bot, userID, util.HandlerAnswer(message))
+	answer := util.HandlerAnswer(message)
+	url := fmt.Sprintf("http://localhost:%s/send_private_msg?user_id=%s&message=%s", config.MyConfig.Bot, userID, answer)
 	_, err := http.Get(url)
 	if err != nil {
 		log.Printf("Send Error:%v", err)

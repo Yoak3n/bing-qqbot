@@ -3,7 +3,6 @@ package router
 import (
 	"Bing-QQBot/config"
 	"Bing-QQBot/controller"
-	"Bing-QQBot/middle"
 	"Bing-QQBot/model"
 	"Bing-QQBot/util"
 	"fmt"
@@ -20,8 +19,9 @@ var flag = false
 func NewRouter() {
 
 	R = gin.Default()
+	//gin.SetMode(gin.ReleaseMode)
 	R.POST("/", Message)
-	R.POST("/answer", middle.ScopeSender, Answer)
+	R.POST("/answer", Answer)
 	R.GET("/question", Question)
 	url := fmt.Sprintf("0.0.0.0:%s", config.MyConfig.Bridge)
 	_ = R.Run(url)
@@ -57,14 +57,22 @@ func Question(c *gin.Context) {
 	self := myMessage.SelfQQ
 	// 也许需要在这判断flag的值防止创建过多对话，但也许能实现同时多个会话，问题在于还需要获得对话id
 	if !flag {
-		log.Println(myMessage.Message)
+		log.Println("Haven‘t begining to chat ")
 		start := controller.StartBingBot(myMessage.MessageType, myMessage.Message, myMessage.GroupID, myMessage.SenderQQ, myMessage.SelfQQ)
-		c.JSON(http.StatusOK, gin.H{
-			"question": start,
-			"type":     messageType,
-			"self":     self,
-		})
-		flag = true
+		if start == "!start" {
+			c.JSON(http.StatusOK, gin.H{
+				"question": start,
+				"type":     messageType,
+				"self":     self,
+			})
+			flag = true
+		} else {
+			c.JSON(http.StatusOK, gin.H{
+				"question": start,
+				"type":     messageType,
+				"self":     self,
+			})
+		}
 
 	} else {
 		if util.HandlerQuesiton(question) == "!exit" {

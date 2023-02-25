@@ -46,8 +46,16 @@ func HandlerQuesiton(message string) (question string) {
 func HandlerAnswer(message string) (answer string) {
 	answer = strconv.Quote(message)
 	answer = answer[1 : len(answer)-1]
-	answer = strings.Replace(answer, " ", "", -1)
+	answer = strings.Replace(answer, " ", "%20", -1)
 	answer = strings.Replace(answer, `\n`, "%0A", -1)
+	answer = strings.Replace(answer, `\`, "", -1)
+	re, _ := regexp.Compile(`\[\^\d*\^\]`)
+	finds := re.FindAllString(answer, -1)
+	if len(finds) != 0 {
+		for _, find := range finds {
+			answer = strings.Replace(answer, find, "", -1)
+		}
+	}
 
 	return
 }

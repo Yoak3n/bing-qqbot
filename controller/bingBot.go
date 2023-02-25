@@ -9,12 +9,16 @@ func StartBingBot(messageType string, question string, groupID string, senderID 
 		question = util.HandlerQuesiton(question)
 		if question == "和bing聊天" || question == "与bing聊天" || question == "chatwithbing" {
 			ReplyNotice("开始与bing聊天吧!", groupID, "")
+			startMessage = "!start"
+
 		}
-	} else {
+	} else if messageType == "private" {
 		if question == "和bing聊天" || question == "与bing聊天" || question == "chatwithbing" {
 			ReplyNotice("开始与bing聊天吧!", "", senderID)
+			startMessage = "!start"
 		}
+	} else {
+		startMessage = ""
 	}
-	startMessage = "!start"
-	return
+	return startMessage
 }
