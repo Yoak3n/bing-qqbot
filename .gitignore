@@ -1,6 +1,6 @@
 # Pyre type checker
 ./config/config.yaml
 config.yaml
-
+cookies.json
 cookie.json
 answer.json
