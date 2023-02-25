@@ -1,6 +1,6 @@
 # Pyre type checker
 ./config/config.yaml
 config.yaml
-
-cookie.json
+cookies.json
+bing_chat/cookies.json
 answer.json
