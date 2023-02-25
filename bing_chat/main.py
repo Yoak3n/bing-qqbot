@@ -8,9 +8,7 @@ import re
 import requests
 import asyncio
 import argparse
-
-from EdgeGPT.src.EdgeGPT import Chatbot
-
+from EdgeGPT import Chatbot
 
 parser = argparse.ArgumentParser(description='Test for argparse')
 
@@ -59,7 +57,7 @@ def run():
                         break
                     elif prompt == "!reset":
                         post_answer("已重置对话")
-                        await bot.reset()
+                        bot.reset()
                     elif prompt == "!start" or prompt == "与bing聊天" or prompt == "和bing聊天" or prompt == "chatwithbing":
                         continue
                     elif prompt == "你好":

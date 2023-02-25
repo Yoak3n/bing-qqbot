@@ -1,6 +1,6 @@
 **基于[go-cqhttp](https://github.com/Mrs4s/go-cqhttp)框架的bing-qq机器人，目前算是一个自用的雏形，还需要很多细节优化~比如go与python之间改用websocket通讯**
 通过大佬acheong08的[EdgeGPT](https://github.com/acheong08/EdgeGPT)调取bing的回答，需要有取得了bingchat的账号，使用Cookie-Editor浏览器插件获取cookie复制到本地的json文件，具体可以去大佬的项目查看具体的介绍
-由于开始写的时候pip安装EdgeGPT库貌似有一定问题，所以把大佬的代码搬到了本地，后续可能该问题已经解决。
+由于开始写的时候pip安装的EdgeGPT库貌似有一定问题，所以把大佬的代码搬到了本地，后续可能该问题已经解决（2/26已解决）。
 
 项目分为两部分，python写的bing_chat和go写的网络通信后端
 执行分为三步：
