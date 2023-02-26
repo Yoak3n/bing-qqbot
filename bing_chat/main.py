@@ -28,7 +28,7 @@ def listen_to_run(message):
 # 单独的一条对话
 async def single_conversion(bot, prompt):
     print("Bot:")
-    response = (await bot.ask(prompt=prompt))
+    response = await bot.ask(prompt=prompt)
     if response["item"]["result"]["value"] == "Success":
         answer = response["item"]["messages"][1]["adaptiveCards"][0]["body"][0]["text"]
         print(answer)

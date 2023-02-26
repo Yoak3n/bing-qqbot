@@ -11,8 +11,5 @@
 python main.py -b 8080
 # -b 参数指定bridge端口，不填写默认就是8080
 ```
-<<<<<<< HEAD
 4. 最后返回项目根目录，windows系统启动```main.exe```，linux系统```chmod 744 bingbot_linux_amd64.go```给予权限后运行
-=======
-4. 最后返回项目根目录，windows系统启动```main.exe```，linux系统```chmod 744 bingbot_linux_amd64.go```给予权限后运行
->>>>>>> dev
+
